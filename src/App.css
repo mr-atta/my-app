@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+/* ///////////////////////////////////////////////// */
+.HornedBeasts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 95%;
+  padding: 10px;
+}
