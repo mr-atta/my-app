@@ -33,7 +33,12 @@ class HornedBeasts extends React.Component {
         <p>{this.props.description}</p>
         <p>👉 {this.state.numOfClick}</p> */}
 
-        <Card style={{ width: "18rem" }}>
+        <Card
+          style={{ width: "18rem" }}
+          onClick={() => {
+            this.props.passFundataOfModlee(this.props.title);
+          }}
+        >
           <Card.Img
             onClick={this.increseOnClick}
             variant="top"
