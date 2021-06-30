@@ -1,13 +1,59 @@
 import React from "react";
 import HornedBeasts from "./HornedBeasts";
 import ArrayPh from "./photoArray.json";
-// import SelectedBeast from "./SelectedBeast";
+import { Form } from "react-bootstrap/";
 
 class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      beastArray: ArrayPh,
+    };
+  }
+
+  handleChange = (event) => {
+    event.preventDefault();
+    // if  // fillter for the beastArray and set state
+    let newArray;
+    if (event.target.value !== "all") {
+      //
+      newArray = ArrayPh.filter(function (n) {
+        return n.horns == event.target.value;
+      });
+    } else {
+      newArray = ArrayPh;
+    }
+
+    console.log(newArray);
+    // sit state
+    this.setState({
+      beastArray: newArray,
+    });
+  };
+
   render() {
     return (
-      <div className="Horned">
-        {ArrayPh.map((item, i) => {
+      <div className="contaner">
+        <Form onSubmit={this.submitForm}>
+          <Form.Group aria-label="Default select example">
+            <Form.Label>choose your favorite cat breed</Form.Label>
+            <Form.Control
+              as="select"
+              name="favoriteCatBreed"
+              onChange={this.handleChange}
+            >
+              <option value="all">All</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+              <option value="100">Woow...</option>
+            </Form.Control>
+          </Form.Group>
+        </Form>
+
+        {/* /////////////////////////// */}
+
+        {this.state.beastArray.map((item, i) => {
           return (
             <HornedBeasts
               title={item.title}
